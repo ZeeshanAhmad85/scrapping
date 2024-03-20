@@ -43,8 +43,8 @@ def main():
             top_n=2
             top_related_articles = get_top_related_articles(user_input, df, vectorizer, tfidf_matrix,top_n)
             st.write(f"### {top_n} - Top Related Articles")
-            json_data = top_related_articles.to_json(orient='records')
-            st.write(json_data)
+            data_dict = top_related_articles.to_dict(orient='records')
+            st.write(data_dict)
             
         except KeyError as e:
             st.error("Error: " + str(e))
