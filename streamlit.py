@@ -40,10 +40,12 @@ def main():
 
     if user_input:
         try:
-            top_n=3
+            top_n=2
             top_related_articles = get_top_related_articles(user_input, df, vectorizer, tfidf_matrix,top_n)
             st.write(f"### {top_n} - Top Related Articles")
-            st.write(top_related_articles[['Title', 'Content', 'Author URL', 'Date', 'Image URL']])
+            json_data = top_related_articles.to_json(orient='records')
+            st.write(json_data)
+            
         except KeyError as e:
             st.error("Error: " + str(e))
 
