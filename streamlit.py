@@ -40,9 +40,10 @@ def main():
 
     if user_input:
         try:
-            top_n=2
+            top_n=1
             top_related_articles = get_top_related_articles(user_input, df, vectorizer, tfidf_matrix,top_n)
             st.write(f"### {top_n} - Top Related Articles")
+            top_related_articles=top_related_articles[['Title','Headings','Author URL','Read Time','Date','Image URL']]
             data_dict = top_related_articles.to_dict(orient='records')
             st.write(data_dict)
             
